@@ -1,0 +1,31 @@
+{
+  "name": "adapted",
+  "version": "1.0.0",
+  "description": "Inclusive Learning Platform — adaptEd",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "ml": "cd ml_service && python ml_server.py",
+    "dev:all": "concurrently \"npm run dev\" \"npm run ml\""
+  },
+  "dependencies": {
+    "@imagekit/nodejs": "^7.6.2",
+    "bcryptjs": "^3.0.3",
+    "concurrently": "^9.0.1",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^4.18.2",
+    "express-rate-limit": "^7.4.0",
+    "helmet": "^7.2.0",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.6.2",
+    "multer": "^2.1.1",
+    "pdf-parse": "^2.4.5",
+    "pdf2pic": "^3.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.15",
+    "@types/react-dom": "^19.2.3"
+  }
+}

@@ -1,0 +1,55 @@
+/* ============================================================
+   AdaptEd — App.css
+   Component-level accessibility overrides
+   (All base tokens live in index.css)
+   ============================================================ */
+
+/* ---- Page wrapper ---- */
+.bg-light-override {
+  background-color: var(--clr-bg) !important;
+}
+
+/* ---- Universal focus ring (yellow — high-visibility) ---- */
+.btn:focus-visible,
+.card:focus-visible,
+nav button:focus-visible,
+label:focus-within {
+  outline: 3px solid #e6a817 !important;
+  outline-offset: 3px !important;
+  box-shadow: none !important;
+}
+
+/* ============================================================
+   DYSLEXIA MODE
+   ============================================================ */
+.dyslexia-mode {
+  font-family: 'Atkinson Hyperlegible', 'Verdana', sans-serif !important;
+  letter-spacing: 0.06em !important;
+  word-spacing: 0.18em !important;
+}
+.dyslexia-mode .card {
+  background-color: #fffef5 !important;
+  line-height: 1.9 !important;
+  text-align: left !important;
+}
+
+/* ============================================================
+   FLASH SUCCESS ANIMATION
+   ============================================================ */
+.flash-success {
+  animation: visual-flash-pulse 0.55s ease-in-out 2;
+}
+@keyframes visual-flash-pulse {
+  0%   { border-color: var(--clr-border, #d4cce8); }
+  50%  {
+    border-color: #2e7d5e !important;
+    box-shadow: 0 0 20px rgba(46, 125, 94, 0.4) !important;
+  }
+  100% { border-color: var(--clr-border, #d4cce8); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .flash-success {
+    animation: none;
+    background-color: #d1f5e3 !important;
+  }
+}

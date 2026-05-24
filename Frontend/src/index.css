@@ -1,0 +1,322 @@
+/* ============================================================
+   AdaptEd — index.css
+   Accessible Pastel Design System
+   WCAG AA compliant — forced light theme for readability
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap');
+
+/* ── Design tokens ── */
+:root {
+  --clr-bg:               #f7f4ff;   /* soft lavender page */
+  --clr-surface:          #ffffff;
+  --clr-surface-2:        #f0ebff;
+
+  --clr-primary:          #4a6fa5;   /* calm periwinkle blue — 4.6:1 on white */
+  --clr-primary-lt:       #dce8ff;
+  --clr-primary-btn:      #4a6fa5;
+  --clr-primary-btn-hover:#3a5a8c;
+
+  --clr-accent:           #6b5ea8;   /* muted violet */
+  --clr-accent-lt:        #ede8ff;
+
+  --clr-danger:           #b5374a;
+  --clr-danger-lt:        #fde8eb;
+
+  --clr-warning:          #8a6200;
+  --clr-warning-lt:       #fff3cd;
+
+  --clr-success:          #2e7d5e;
+  --clr-success-lt:       #d1f5e3;
+
+  --clr-text:             #1e1a2e;
+  --clr-text-muted:       #5a566a;
+  --clr-text-inv:         #ffffff;
+
+  --clr-border:           #d4cce8;
+  --clr-border-focus:     #4a6fa5;
+
+  --shadow-sm: 0 2px 8px rgba(74, 111, 165, 0.08);
+  --shadow-md: 0 4px 20px rgba(74, 111, 165, 0.13);
+
+  --font-body:  'Atkinson Hyperlegible', 'Verdana', sans-serif;
+  --font-ui:    'Nunito', 'Segoe UI', sans-serif;
+  --font-mono:  ui-monospace, Consolas, monospace;
+
+  --radius-sm:   8px;
+  --radius-md:   14px;
+  --radius-lg:   20px;
+  --radius-pill: 999px;
+
+  --transition: 160ms ease;
+
+  color-scheme: light;   /* FORCE light — prevents system dark mode inverting text */
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ── Base reset ── */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.65;
+  color: var(--clr-text);
+  background-color: var(--clr-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  width: 1126px;
+  max-width: 100%;
+  margin: 0 auto;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Typography ── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-ui);
+  color: var(--clr-text);
+  margin-top: 0;
+}
+h1 { font-size: clamp(2rem, 5vw, 3.25rem); font-weight: 800; letter-spacing: -0.03em; }
+h2 { font-size: clamp(1.25rem, 3vw, 1.6rem); font-weight: 700; }
+h5, h6 { font-size: 1rem; font-weight: 700; }
+p { margin: 0; }
+
+code {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  background: var(--clr-surface-2);
+  color: var(--clr-text);
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+}
+
+/* ── Universal focus ring ── */
+*:focus-visible {
+  outline: 3px solid #e6a817;
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* ── Skip link ── */
+.skip-link {
+  position: absolute;
+  top: -999px; left: 0;
+  padding: 10px 20px;
+  background: var(--clr-primary);
+  color: #fff;
+  font-weight: 700;
+  z-index: 9999;
+  border-radius: 0 0 var(--radius-md) 0;
+}
+.skip-link:focus { top: 0; }
+
+/* ============================================================
+   Bootstrap overrides
+   ============================================================ */
+
+/* Page bg */
+.bg-light-override,
+.bg-light {
+  background-color: var(--clr-bg) !important;
+}
+
+/* Cards — always white surface */
+.card {
+  background-color: #ffffff !important;
+  border: 1px solid var(--clr-border) !important;
+  border-radius: var(--radius-lg) !important;
+  box-shadow: var(--shadow-sm);
+  color: var(--clr-text) !important;
+}
+.card-header.bg-white,
+.card-body {
+  background-color: #ffffff !important;
+  color: var(--clr-text) !important;
+}
+
+/* Navbar */
+.navbar, nav.navbar {
+  background-color: #ffffff !important;
+  border: 1px solid var(--clr-border) !important;
+  border-radius: var(--radius-lg) !important;
+  box-shadow: var(--shadow-sm);
+  padding: 12px 20px !important;
+}
+
+/* Brand */
+.navbar-brand,
+.fw-bolder.text-success {
+  font-family: var(--font-ui) !important;
+  font-weight: 800 !important;
+  color: var(--clr-accent) !important;
+  font-size: 1.4rem !important;
+}
+.navbar-brand .text-dark { color: var(--clr-text) !important; }
+
+/* Green → periwinkle */
+.text-success                { color: var(--clr-primary) !important; }
+.btn-success                 { background-color: var(--clr-primary-btn) !important; border-color: var(--clr-primary-btn) !important; color: #fff !important; }
+.btn-success:hover           { background-color: var(--clr-primary-btn-hover) !important; border-color: var(--clr-primary-btn-hover) !important; }
+.btn-outline-success         { border-color: var(--clr-primary) !important; color: var(--clr-primary) !important; background: transparent !important; }
+.btn-outline-success:hover   { background-color: var(--clr-primary-lt) !important; color: var(--clr-primary) !important; }
+.border-success              { border-color: var(--clr-primary) !important; }
+.badge.bg-success            { background-color: var(--clr-primary) !important; color: #fff !important; }
+.spinner-border.text-success { color: var(--clr-primary) !important; }
+.bg-success-subtle           { background-color: var(--clr-primary-lt) !important; }
+.text-success.h6, h6.text-success { color: var(--clr-primary) !important; }
+
+/* Danger */
+.btn-outline-danger          { border-color: var(--clr-danger) !important; color: var(--clr-danger) !important; }
+.btn-outline-danger:hover    { background-color: var(--clr-danger-lt) !important; }
+.alert-danger                { background-color: var(--clr-danger-lt) !important; color: var(--clr-danger) !important; border-color: var(--clr-danger) !important; }
+.text-danger                 { color: var(--clr-danger) !important; }
+.alert-success               { background-color: var(--clr-success-lt) !important; color: var(--clr-success) !important; border-color: var(--clr-success) !important; }
+
+/* Text colours — force visible on white */
+.text-dark      { color: var(--clr-text) !important; }
+.text-muted,
+.text-secondary { color: var(--clr-text-muted) !important; }
+p.text-dark,
+p.lh-lg         { color: var(--clr-text) !important; }
+
+/* Buttons */
+.btn {
+  font-family: var(--font-ui) !important;
+  font-weight: 600 !important;
+  border-radius: var(--radius-pill) !important;
+  transition: background-color var(--transition), box-shadow var(--transition) !important;
+  min-height: 44px;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0.45rem 1.2rem !important;
+}
+.btn-lg { min-height: 52px; font-size: 1rem !important; }
+.btn-sm { min-height: 36px; font-size: 0.85rem !important; }
+
+/* Form controls */
+.form-control,
+.form-select {
+  background-color: var(--clr-surface-2) !important;
+  border: 1.5px solid var(--clr-border) !important;
+  border-radius: var(--radius-md) !important;
+  color: var(--clr-text) !important;
+  font-family: var(--font-body) !important;
+  font-size: 1rem !important;
+  min-height: 44px;
+  padding: 0.55rem 0.9rem !important;
+}
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--clr-border-focus) !important;
+  box-shadow: 0 0 0 3px rgba(74,111,165,0.2) !important;
+  outline: none !important;
+}
+.form-control::placeholder { color: var(--clr-text-muted) !important; }
+
+.form-label {
+  font-family: var(--font-ui) !important;
+  font-weight: 600 !important;
+  color: var(--clr-text) !important;
+  font-size: 0.9rem !important;
+}
+
+/* Switches */
+.form-check-input[type="checkbox"] {
+  width: 2.4em !important; height: 1.3em !important;
+  background-color: var(--clr-border) !important;
+  border-color: var(--clr-border) !important;
+  cursor: pointer;
+}
+.form-check-input[type="checkbox"]:checked {
+  background-color: var(--clr-primary) !important;
+  border-color: var(--clr-primary) !important;
+}
+.form-check-label {
+  font-family: var(--font-ui) !important;
+  font-weight: 600 !important;
+  color: var(--clr-text-muted) !important;
+  font-size: 0.88rem !important;
+  cursor: pointer;
+}
+
+/* Muted / small */
+.small, small { font-size: 0.875rem !important; line-height: 1.5 !important; }
+.fw-medium    { font-weight: 600 !important; }
+.fw-semibold  { font-weight: 700 !important; }
+
+/* Badges */
+.badge {
+  font-family: var(--font-ui) !important;
+  font-weight: 700 !important;
+  font-size: 0.78rem !important;
+  padding: 0.35em 0.75em !important;
+}
+
+/* PDF uploader drop zone */
+label[for="pdfInput"] {
+  background-color: var(--clr-surface-2) !important;
+  border-radius: var(--radius-md) !important;
+  border: 2px dashed var(--clr-border) !important;
+  transition: border-color var(--transition), background-color var(--transition) !important;
+  color: var(--clr-text-muted) !important;
+}
+label[for="pdfInput"]:hover {
+  border-color: var(--clr-primary) !important;
+  background-color: var(--clr-primary-lt) !important;
+}
+
+/* Accessibility tips card */
+.card.bg-success-subtle,
+.bg-success-subtle {
+  background-color: var(--clr-primary-lt) !important;
+}
+.card.bg-success-subtle h6,
+.card.bg-success-subtle .text-success {
+  color: var(--clr-primary) !important;
+}
+.card.bg-success-subtle .text-secondary,
+.card.bg-success-subtle li {
+  color: var(--clr-text-muted) !important;
+}
+
+/* ============================================================
+   DYSLEXIA MODE
+   ============================================================ */
+.dyslexia-mode {
+  font-family: 'Atkinson Hyperlegible', 'Verdana', sans-serif !important;
+  letter-spacing: 0.06em !important;
+  word-spacing: 0.18em !important;
+}
+.dyslexia-mode .card {
+  background-color: #fffef5 !important;
+  line-height: 1.9 !important;
+  text-align: left !important;
+}
+
+/* ============================================================
+   FLASH SUCCESS
+   ============================================================ */
+.flash-success { animation: visual-flash-pulse 0.55s ease-in-out 2; }
+@keyframes visual-flash-pulse {
+  0%   { border-color: var(--clr-border); }
+  50%  { border-color: var(--clr-primary) !important; box-shadow: 0 0 20px rgba(74,111,165,0.35) !important; }
+  100% { border-color: var(--clr-border); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .flash-success { animation: none; background-color: var(--clr-primary-lt) !important; }
+}
